@@ -3,7 +3,7 @@
         If IO.File.Exists(fileName) = False Then
             IO.File.Create(fileName).Dispose()
         Else
-            If MsgBox("File already exists. Overwrite?", MsgBoxStyle.YesNo + MsgBoxStyle.SystemModal, "Overwrite file?") = MsgBoxResult.Yes Then
+            If MsgBox(fileName & " already exists. Overwrite?", MsgBoxStyle.YesNo + MsgBoxStyle.SystemModal, "Overwrite file?") = MsgBoxResult.Yes Then
                 IO.File.Delete(fileName)
             End If
         End If
