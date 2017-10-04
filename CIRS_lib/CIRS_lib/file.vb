@@ -1,5 +1,5 @@
 ﻿Public Class file
-    Public Sub writeToFile(ByVal input As String, ByVal fileName As String)
+    Public Sub writeToFile(ByVal input As String, ByVal fileName As String) 'Write text to a file
         If IO.File.Exists(fileName) = False Then
             IO.File.Create(fileName).Dispose()
         Else
@@ -15,4 +15,18 @@
             MsgBox("Please close the file first.", MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
+    Public Function parse(input As String, find As String, stopAt As String)
+        Dim x As Integer = (input.IndexOf(find) + Len(find)) 'Parse a string using a character/string to stop at
+        Dim output As String = ""
+        Try
+            While input(x) <> """"
+                output += input(x)
+                x += 1
+            End While
+        Catch ex As Exception
+            MsgBox("Can't find what you're looking for.")
+        End Try
+        Return output
+    End Function
 End Class
