@@ -20,7 +20,7 @@
         Dim x As Integer = (input.IndexOf(find) + Len(find)) 'Parse a string using a character/string to stop at
         Dim output As String = ""
         Try
-            While input(x) <> """"
+            While input(x) <> stopAt
                 output += input(x)
                 x += 1
             End While
