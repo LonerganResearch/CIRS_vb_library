@@ -1,18 +1,16 @@
 ﻿Public Class file
     Public Sub write(ByVal input As String, ByVal fileName As String, ByVal append As Boolean) 'Write text to a file
-        If IO.File.Exists(fileName) = False Or append = True Then
-            IO.File.Create(fileName).Dispose()
-        Else
-            If MsgBox(fileName & " already exists. Overwrite?", MsgBoxStyle.YesNo + MsgBoxStyle.SystemModal, "Overwrite file?") = MsgBoxResult.Yes Then
-                IO.File.Delete(fileName)
+        If IO.File.Exists(fileName) = True And append = False Then
+            If MsgBox(fileName & " already exists. Are you sure you want to overwrite it?", MsgBoxStyle.YesNo + MsgBoxStyle.SystemModal, "Overwrite file?") = MsgBoxResult.No Then
+                append = False
             End If
         End If
         Try
-            Dim objWriter As New IO.StreamWriter(fileName, True)
+            Dim objWriter As New IO.StreamWriter(fileName, append)
             objWriter.WriteLine(input)
             objWriter.Close()
         Catch ex As Exception
-            MsgBox("Please close the file first.", MsgBoxStyle.Critical, "Error")
+            MsgBox("Error: " & ex.Message & vbCrLf & "Please try closing the file.", MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
 
