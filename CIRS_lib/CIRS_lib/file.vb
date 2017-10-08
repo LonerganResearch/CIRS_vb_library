@@ -1,5 +1,5 @@
 ﻿Public Class file
-    Public Sub write(ByVal input As String, ByVal fileName As String, ByVal append As Boolean) 'Write text to a file
+    Public Sub write(ByVal input As String, ByVal fileName As String, Optional ByVal append As Boolean = True) 'Write text to a file
         If IO.File.Exists(fileName) = True And append = False Then
             If MsgBox(fileName & " already exists. Are you sure you want to overwrite it?", MsgBoxStyle.YesNo + MsgBoxStyle.SystemModal, "Overwrite file?") = MsgBoxResult.No Then
                 append = False
