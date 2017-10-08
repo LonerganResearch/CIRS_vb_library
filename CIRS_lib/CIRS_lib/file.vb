@@ -14,11 +14,11 @@
         End Try
     End Sub
 
-    Public Function parse(input As String, find As String, stopAt As String)
-        Dim x As Integer = (input.IndexOf(find) + Len(find)) 'Parse a string using a character/string to stop at
+    Public Function textBetweenStrings(input As String, startString As String, endString As String) As String 'Find a string within a string using start and stop strings/characters
+        Dim x As Integer = (input.IndexOf(startString) + Len(startString))
         Dim output As String = ""
         Try
-            While input(x) <> stopAt
+            While input(x) <> endString(0)
                 output += input(x)
                 x += 1
             End While
