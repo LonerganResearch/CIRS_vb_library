@@ -14,17 +14,21 @@
         End Try
     End Sub
 
-    Public Function parseInString(input As String, startString As String, endChar As Char) 'Find a string within a string using start and stop strings/characters
+    Public Function parseInString(input As String, startStr As String, Optional ByVal endStr As String = "") 'Find a string within a string using start and stop strings/characters
         Dim output As String = ""
         Dim x As Integer = 0
         Try
-            If startString <> "" Then
-                x = (input.IndexOf(startString) + Len(startString))
+            If startStr <> "" Then
+                x = (input.IndexOf(startStr) + Len(startStr))
             End If
-            While input(x) <> endChar Or x <> (Len(input) - 1)
-                output += input(x)
-                x += 1
-            End While
+            If endStr = "" Then
+                output = input.Substring(x, Len(input) - x)
+            Else
+                While input(x) <> endStr(0)
+                    output += input(x)
+                    x += 1
+                End While
+            End If
         Catch ex As Exception
             MsgBox("Can't find what you're looking for.")
         End Try
