@@ -21,7 +21,7 @@
             If startString <> "" Then
                 x = (input.IndexOf(startString) + Len(startString))
             End If
-            While input(x) <> endChar
+            While input(x) <> endChar Or x <> (Len(input) - 1)
                 output += input(x)
                 x += 1
             End While
