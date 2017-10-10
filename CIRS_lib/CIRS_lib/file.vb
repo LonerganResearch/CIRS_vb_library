@@ -16,8 +16,11 @@
 
     Public Function parseInString(input As String, startString As String, endChar As Char) 'Find a string within a string using start and stop strings/characters
         Dim output As String = ""
-        Dim x As Integer = (input.IndexOf(startString) + Len(startString))
+        Dim x As Integer = 0
         Try
+            If startString <> "" Then
+                x = (input.IndexOf(startString) + Len(startString))
+            End If
             While input(x) <> endChar
                 output += input(x)
                 x += 1
